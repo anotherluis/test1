@@ -46,4 +46,8 @@ public class Category {
                 '}';
     }
 
+    public static Category category() {
+        return null;
+    }
+
 }
