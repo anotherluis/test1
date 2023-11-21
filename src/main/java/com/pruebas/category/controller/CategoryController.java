@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.pruebas.category.model.Category;
 import com.pruebas.category.service.CategoryService;
+import com.pruebas.common.ApiResponse;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,19 +31,19 @@ public class CategoryController {
         return categoryService.getAllCategorys();
     }
 
-    @GetMapping("/show/:{id}")
-    public Optional<Category> getCategoryById(@PathVariable Long id) {
-        return categoryService.getCategoryById(id);
+    @GetMapping("/show/")
+    public Optional<Category> getCategoryById(@RequestBody Category category) {
+        return categoryService.getCategoryById(category);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/deleteall")
     public String deleteAllCategorys() {
         categoryService.deleteAllCategorys();
         return "All users have been deleted successfully.";
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable Long id) {
-        categoryService.deleteCategory(id);
+    @PostMapping("/delete")
+    public void deleteById(@RequestBody Category category) {
+        categoryService.deleteCategory(category);
     }
 }

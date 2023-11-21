@@ -26,8 +26,9 @@ public class CategoryService {
     }
 
     // ** Get category by ID
-    public Optional<Category> getCategoryById(Long id) {
-        return categoryRepository.findById(id);
+    public Optional<Category> getCategoryById(Category category) {
+        Long lonid = (long) category.getId();
+        return categoryRepository.findById(lonid);
     }
 
     // ** Delete all category
@@ -36,8 +37,9 @@ public class CategoryService {
     }
 
     // ** Delete category
-    public void deleteCategory(Long id) {
-        categoryRepository.deleteById(id);
+    public void deleteCategory(Category category) {
+        Long lonid = (long) category.getId();
+        categoryRepository.deleteById(lonid);
     }
 
     // ** Update Category
